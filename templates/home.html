@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+    <h1>Home</h1>
+
+    <a href="{% url 'account_change_password' %}">Поменять пароль</a>
+    
+    {% comment %} <a href="https://offlinefarm.herokuapp.com/accounts/password/change/">Поменять пароль</a> {% endcomment %}
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" class="text-truncate">Author</th>
+                <th scope="col" class="text-truncate">Title</th>
+                <th scope="col" class="text-truncate">Add Review</th>
+                <th scope="col" class="text-truncate">Read</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for object in object_list %}
+                <tr>
+                    <td class="text-truncate">{{ object.author }}</td>
+                    <td class="text-truncate">{{ object.title }}</td>
+                    <td class="text-truncate"><a href="">add review</a></td>
+                    <td class="text-truncate">{{ object.if_read }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
